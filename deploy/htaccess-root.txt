@@ -1,0 +1,20 @@
+# Корневой .htaccess для хостинга, где корень сайта = htdocs (InfinityFree и аналоги).
+# Проект кладётся в htdocs целиком; наружу отдаётся только каталог public.
+Options -Indexes
+RewriteEngine On
+
+# служебные каталоги закрыты полностью
+RewriteRule ^(src|config|storage|database|cron|tests|docs|deploy)(/|$) - [F,L]
+RewriteRule ^(README\.md|start\.bat)$ - [F,L]
+
+# файлы public отдаются как есть
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f
+RewriteRule ^(.*)$ public/$1 [L]
+
+# всё остальное (API и SPA) — через единую точку входа
+RewriteRule ^ public/index.php [L]
+
+<IfModule mod_php.c>
+php_value upload_max_filesize 12M
+php_value post_max_size 14M
+</IfModule>

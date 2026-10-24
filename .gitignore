@@ -1,0 +1,22 @@
+# локальные настройки и секреты
+config/config.local.php
+
+# артефакты сборки пакета для хостинга (содержат пароли БД и админа)
+deploy/out/
+
+# рабочие данные приложения
+storage/uploads/*
+storage/mails/*
+storage/backups/*
+storage/logs/*
+!storage/uploads/.gitkeep
+!storage/mails/.gitkeep
+!storage/backups/.gitkeep
+!storage/logs/.gitkeep
+
+# временные файлы
+_shots/
+_design/
+__pycache__/
+*.pyc
+.DS_Store

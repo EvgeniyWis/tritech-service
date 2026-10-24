@@ -1,0 +1,6 @@
+# Для развёртывания под Apache: корень сайта = каталог public
+Options -Indexes
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+RewriteRule ^ index.php [L]
